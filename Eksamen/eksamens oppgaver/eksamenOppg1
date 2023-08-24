@@ -1,0 +1,22 @@
+import re
+from urllib.parse import urljoin
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+html = urlopen("https://en.wikipedia.org/wiki/Ukraine")
+bs = BeautifulSoup(html.read(), "html.parser")
+start_url = "https://en.wikipedia.org/wiki/"
+
+thumbinner_divs = bs.find_all("div", {'class': "thumbinner"})
+
+for div in thumbinner_divs:
+    image_finder = div.find("img")
+    if image_finder:
+        img_source = image_finder.get("src")
+
+        caption_finder = div.find("div", {'class':"thumbcaption"}).text
+
+        print(img_source)
+        print(caption_finder)
+
+"""Task for finding image links and the caption of each image and then printing it using bs4."""

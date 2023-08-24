@@ -1,0 +1,7 @@
+#selecting universities and then counting them
+SELECT (COUNT(?universities) AS ?count) WHERE{
+  #instance of university
+  ?universities wdt:P31 wd:Q3918
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE], en". }
+}

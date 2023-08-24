@@ -1,0 +1,19 @@
+#Find all American Politicians whose fathers were also politician.
+SELECT ?politicianLabel ?fatherLabel WHERE {
+  #instance of human
+  ?politician wdt:P31 wd:Q5.
+  #American citizenship
+  ?politician wdt:P27 wd:Q30.
+  #politician 
+  ?politician wdt:P106 wd:Q82955.
+  #father
+  ?politician wdt:P22 ?father.
+  #father also politician
+  ?father wdt:P106 wd:Q82955
+              
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # retrieve labels
+
+}
+
+
+

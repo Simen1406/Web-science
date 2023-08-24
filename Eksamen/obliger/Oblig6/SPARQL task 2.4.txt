@@ -1,0 +1,9 @@
+#birthplace of Norwegians who were both politicians and poets
+SELECT ?poetLabel ?birthplaceLabel ?coords WHERE {
+  ?poet wdt:P31 wd:Q5;
+    wdt:P27 wd:Q20;
+    wdt:P106 wd:Q49757, wd:Q82955;
+    wdt:P19 ?birthplace.
+  ?birthplace wdt:P625 ?coords.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE], en". }
+}

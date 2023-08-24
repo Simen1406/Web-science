@@ -1,0 +1,12 @@
+SELECT ?nobelLabel  ?winnerLabel ?birthplaceLabel ?coords WHERE {
+  #instance of human and award reciecved
+  ?winner wdt:P31 wd:Q5 ;
+          wdt:P166 ?nobel .
+# which nobel prize
+  ?nobel wdt:P279 wd:Q7191 .
+  #birthplace 
+  ?winner wdt:P19 ?birthplace.
+  #birthplace coords
+  ?birthplace wdt:P625 ?coords
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
